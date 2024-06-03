@@ -1,0 +1,6 @@
+@RecrutamentoAPI_HostAddress = http://localhost:5166
+
+GET {{RecrutamentoAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
