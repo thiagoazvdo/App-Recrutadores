@@ -39,7 +39,7 @@ namespace RecrutamentoAPI.Controllers
         }
 
         [HttpGet("status/{status}")]
-        public async Task<ActionResult<IEnumerable<Candidato>>> GetCandidatosByStatus(bool status)
+        public async Task<ActionResult<IEnumerable<Candidato>>> GetCandidatosByStatus(string status)
         {
             return await _context.Candidatos.Where(c => c.Status == status).ToListAsync();
         }

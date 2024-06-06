@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace RecrutamentoAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class Inicial : Migration
+    public partial class Atualização : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -35,9 +35,8 @@ namespace RecrutamentoAPI.Migrations
                 name: "Candidatos",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    CandidatoId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CandidatoId = table.Column<int>(type: "int", nullable: false),
                     Nome = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Contatos = table.Column<string>(type: "longtext", nullable: false)
@@ -46,13 +45,14 @@ namespace RecrutamentoAPI.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Linkedin = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Status = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    Status = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     DataContratacao = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     EmpresaId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Candidatos", x => x.Id);
+                    table.PrimaryKey("PK_Candidatos", x => x.CandidatoId);
                     table.ForeignKey(
                         name: "FK_Candidatos_Empresas_EmpresaId",
                         column: x => x.EmpresaId,
