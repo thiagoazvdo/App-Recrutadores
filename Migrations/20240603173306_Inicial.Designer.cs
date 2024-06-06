@@ -12,7 +12,7 @@ using RecrutamentoAPI.Data;
 namespace RecrutamentoAPI.Migrations
 {
     [DbContext(typeof(RecrutamentoContext))]
-    [Migration("20240603173306_Inicial")]
+    [Migration("2024060317q3306_Inicial")]
     partial class Inicial
     {
         /// <inheritdoc />

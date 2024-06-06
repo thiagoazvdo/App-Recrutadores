@@ -30,9 +30,6 @@ namespace RecrutamentoAPI.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CandidatoId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Contatos")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -40,7 +37,7 @@ namespace RecrutamentoAPI.Migrations
                     b.Property<DateTime?>("DataContratacao")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int>("EmpresaId")
+                    b.Property<int?>("EmpresaId")
                         .HasColumnType("int");
 
                     b.Property<string>("Habilidades")
@@ -73,9 +70,6 @@ namespace RecrutamentoAPI.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("EmpresaId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -87,13 +81,9 @@ namespace RecrutamentoAPI.Migrations
 
             modelBuilder.Entity("RecrutamentoAPI.Models.Candidato", b =>
                 {
-                    b.HasOne("RecrutamentoAPI.Models.Empresa", "Empresa")
+                    b.HasOne("RecrutamentoAPI.Models.Empresa", null)
                         .WithMany("Candidatos")
-                        .HasForeignKey("EmpresaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Empresa");
+                        .HasForeignKey("EmpresaId");
                 });
 
             modelBuilder.Entity("RecrutamentoAPI.Models.Empresa", b =>

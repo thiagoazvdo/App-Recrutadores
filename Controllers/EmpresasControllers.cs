@@ -21,19 +21,28 @@ namespace RecrutamentoAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Empresa>>> GetEmpresas()
         {
-            return await _context.Empresas.ToListAsync();
+            var empresas = await _context.Empresas.ToListAsync();
+            foreach (var empresa in empresas)
+            {
+                var candidatos = _context.Candidatos.Where(c => c.EmpresaId == empresa.Id);
+                empresa.Candidatos = candidatos?.ToListAsync().Result;
+            }
+            return empresas;
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Empresa>> GetEmpresa(int id)
         {
             var empresa = await _context.Empresas.FindAsync(id);
-
+            
             if (empresa == null)
             {
                 return NotFound();
             }
-
+            
+            var candidatos = _context.Candidatos.Where(c => c.EmpresaId == empresa.Id);
+            empresa.Candidatos = candidatos?.ToListAsync().Result;
+            
             return empresa;
         }
 
@@ -43,13 +52,13 @@ namespace RecrutamentoAPI.Controllers
             _context.Empresas.Add(empresa);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetEmpresa), new { id = empresa.EmpresaId }, empresa);
+            return CreatedAtAction(nameof(GetEmpresa), new { id = empresa.Id }, empresa);
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> PutEmpresa(int id, Empresa empresa)
         {
-            if (id != empresa.EmpresaId)
+            if (id != empresa.Id)
             {
                 return BadRequest();
             }
@@ -92,7 +101,7 @@ namespace RecrutamentoAPI.Controllers
 
         private bool EmpresaExists(int id)
         {
-            return _context.Empresas.Any(e => e.EmpresaId == id);
+            return _context.Empresas.Any(e => e.Id == id);
         }
     }
 }

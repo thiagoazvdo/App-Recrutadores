@@ -28,7 +28,7 @@ namespace RecrutamentoAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Candidato>> GetCandidato(int id)
         {
-            var candidato = await _context.Candidatos.FindAsync(id);
+            var candidato = await _context.Candidatos.FirstOrDefaultAsync(c => c.Id == id);
 
             if (candidato == null)
             {
@@ -47,18 +47,28 @@ namespace RecrutamentoAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Candidato>> PostCandidato(Candidato candidato)
         {
+            if (!_context.Empresas.Any(e => e.Id == candidato.EmpresaId))
+            {
+                return BadRequest("Empresa não encontrada");
+            }
+
             _context.Candidatos.Add(candidato);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetCandidato), new { id = candidato.CandidatoId }, candidato);
+            return CreatedAtAction(nameof(GetCandidato), new { id = candidato.Id }, candidato);
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCandidato(int id, Candidato candidato)
         {
-            if (id != candidato.CandidatoId)
+            if (id != candidato.Id)
             {
                 return BadRequest();
+            }
+
+            if (!_context.Empresas.Any(e => e.Id == candidato.EmpresaId))
+            {
+                return BadRequest("Empresa não encontrada");
             }
 
             _context.Entry(candidato).State = EntityState.Modified;
@@ -99,7 +109,7 @@ namespace RecrutamentoAPI.Controllers
 
         private bool CandidatoExists(int id)
         {
-            return _context.Candidatos.Any(e => e.CandidatoId == id);
+            return _context.Candidatos.Any(e => e.Id == id);
         }
     }
 }

@@ -17,4 +17,15 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Migrations\20240606041748_Inicial.cs" />
+    <Compile Remove="Migrations\20240606041748_Inicial.Designer.cs" />
+    <Compile Remove="Migrations\20240603173306_Inicial.cs" />
+    <Compile Remove="Migrations\20240603173306_Inicial.Designer.cs" />
+    <Compile Remove="Migrations\20240606041958_Inicial.cs" />
+    <Compile Remove="Migrations\20240606041958_Inicial.Designer.cs" />
+    <Compile Remove="Migrations\20240606152626_Inicial.cs" />
+    <Compile Remove="Migrations\20240606152626_Inicial.Designer.cs" />
+  </ItemGroup>
+
 </Project>

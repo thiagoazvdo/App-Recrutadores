@@ -2754,26 +2754,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\thiag\\.nuget\\packages\\": {}
+    "/Users/maykoncosta/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\thiag\\OneDrive\\Área de Trabalho\\p2\\RecrutamentoAPI\\RecrutamentoAPI.csproj",
+      "projectUniqueName": "/Users/maykoncosta/Desktop/dotnet-Genilson/App-Recrutadores/RecrutamentoAPI.csproj",
       "projectName": "RecrutamentoAPI",
-      "projectPath": "C:\\Users\\thiag\\OneDrive\\Área de Trabalho\\p2\\RecrutamentoAPI\\RecrutamentoAPI.csproj",
-      "packagesPath": "C:\\Users\\thiag\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\thiag\\OneDrive\\Área de Trabalho\\p2\\RecrutamentoAPI\\obj\\",
+      "projectPath": "/Users/maykoncosta/Desktop/dotnet-Genilson/App-Recrutadores/RecrutamentoAPI.csproj",
+      "packagesPath": "/Users/maykoncosta/.nuget/packages/",
+      "outputPath": "/Users/maykoncosta/Desktop/dotnet-Genilson/App-Recrutadores/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\thiag\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/maykoncosta/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "/usr/local/share/dotnet/library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -2786,11 +2785,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -2839,7 +2833,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.203/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.204/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
